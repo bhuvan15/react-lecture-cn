@@ -1,17 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+
+const Dog = (props) => {
+  return React.createElement("div", {}, [
+    React.createElement("h3", {}, props.name),
+    React.createElement("h3", {}, props.weight),
+    React.createElement("h3", {}, props.breed),
+  ]);
+};
+
+const App = () => {
+  var arr = [
+    { name: "Bull Terrier", weight: "50.70 Kg", breed: "Terrier" },
+    { name: "PitBull", weight: "50.70 Kg", breed: "Bull" },
+    { name: "Puppy", weight: "5.70 Kg", breed: "husky" },
+  ];
+  return React.createElement(
+    "div", // tag
+    { id: "website-title" }, // attributes with the element
+    [
+
+        
+      React.createElement("h1", {}, "Dog Website"),
+      arr.map((item) => React.createElement(Dog, item)),
+    ] // content can be another component also.
+  );
+};
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  React.createElement(
+    // component to render
+    App
+  ),
+  document.getElementById("root") // place to render
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
